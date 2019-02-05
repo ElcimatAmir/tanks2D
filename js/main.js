@@ -37,16 +37,25 @@ document.getElementById("playButton").onclick = function(){
 }
 
 function startGame(playerName){
-	var canvas  = document.getElementById("canvas");
-
+	const canvas = document.getElementById("canvas");
+	const c = canvas.getContext("2d");
+	const width  = canvas.clientWidth;
+	const height = canvas.clientHeight;
+	var postionX = 100;
+	var postionY = 100;
 	var playerInfo = {
 		name: playerName ,
 		score: 0
-	}
+	};
+
+	//shoud my tank and start controll it
+	//c.drawImage("../img/myTank.png",postionX, postionY, 40, 60);
+
+
+
 	//for this time its set a randoum number for score
 	playerInfo.score =  Math.floor(Math.random() * (100 - 1) + 1) ;
-	console.log(playerInfo);
-
+	
 	// save the player data to the local storage
 	savePlayer(playerInfo);
 }
@@ -57,8 +66,6 @@ function savePlayer(playerInfo){
 	
 	drawHtml(playerInfo);	
 }
-
-
 
 function drawHtml(playerInfo){
 	var html = "" ;
