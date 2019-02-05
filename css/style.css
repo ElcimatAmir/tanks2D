@@ -46,7 +46,7 @@ header{
 /*	main content only the game area  */
 main{
 	width: 100%;
-	height: 560px;
+	height: 510px;
 	margin: 0px auto;
 
 	display: flex;
@@ -56,26 +56,89 @@ main{
 	/*уменшяем от 100%ого поля поля игры и делим на два для два сайдбара*/
 	width: calc((100% - 660px) / 2);
 	height: 100%;
-	
-	text-align: center;
 
-	background-color: aqua;
+	background-color: black;
+	color:#fff;
+	
 }
-#gameValues{
+.gameValues{
+	display: flex;
+	justify-content: center;
+	
 	margin-top: 10px;
 	margin-left: 10px;
-	
-	font-weight: bold;
-	font-size: 18px;
-	
-	color:black;
+	padding-bottom: 5px;
 
+	text-align: center;
+	font-weight: bold;
+	border-bottom: 1px solid lightgray;
+	font-size: 18px;
 }
-#gameValues span {
+.gameValues span {
 	font-weight: normal;
+	font-size: 15px;
+	color:lightgreen;
 }
 #playArea{
+	position: relative;
+	
+	display: flex;
+	justify-content: center;
+
 	width: 660px;
 	height: 100%;
+	
 	background-color: black;
+	background-image: url("../img/playAreaBackground.png") ;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+}
+#playArea canvas{
+	margin-top: 40px;
+	width: 600px;
+	height: 430px;
+	background-color: gray;
+	opacity: .8 ;
+}
+#playersResult{
+	width: 95%;
+	height: calc(100%  - 50px);
+
+	margin: 0px auto;
+	margin-top: 5px;
+	
+	display: flex;
+	flex-direction: column;
+	
+	overflow-y: scroll;
+}
+.basic{
+	width: 100%;
+	height: 50px;
+
+	color: white;
+	display: flex;
+	justify-content: space-around;
+	border-bottom: 1px solid white;
+}
+.basic h3{
+	font-weight: bold;
+	font-size: 18px;
+
+	margin-top: 10px;
+}
+.playersInfo{
+	width: 100%;
+	height: 50px;
+	background-color: black;
+	color :lightblue;
+	border-bottom: 1px dashed white;
+	display: flex;
+	justify-content: space-around;
+}
+.playersInfo h4{
+	font-size: 15px;
+	
+	margin-top: 10px;
 }
