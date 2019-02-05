@@ -4,9 +4,27 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<title>tanks 2d</title>
-	<script src="js/main.js"></script>
+	<script type="text/javascript" src="js/jQuery.js"></script>
+	<script type="text/javascript" src="js/main.js" defer></script>
+	<link href="img/icon.png" rel="shortcut icon">
 </head>
 <body>
-	
+	<header>
+		<input type="text" placeholder="name player" id="playerName">
+		<input type="submit" value="PLAY" id="playButton">
+	</header>
+	<main>
+		<div id="gamePanel" class="side">
+			<div id="gameValues">
+				<p>Life:  <span id="lifeValue"> 3</span></p>
+				<p>Time:  <span id="timeVale">0's</span></p>
+				<p>Score: <span id="scoreValue">0</span></p>
+			</div>
+		</div>
+		<div id="playArea"></div>
+		<div id="playersRecords" class="side">
+			<h3>Hight Scors</h3>
+		</div>
+	</main>
 </body>
 </html>

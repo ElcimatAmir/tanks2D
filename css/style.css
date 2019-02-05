@@ -2,3 +2,80 @@
 	margin: 0px;
 	padding: 0px;
 }
+header{
+	background-color: lightgray;
+	width :100%;
+	height: 100px;
+	display: flex;
+	justify-content: center;
+}
+#playerName{
+	height: 30px;
+	width: 190px;
+	margin-top: 30px;
+	padding-left: 5px;
+
+	border: 1px solid gray;
+	border-radius: 10px;
+
+}
+#playerName:hover{
+	transition: .5s ;
+	border-radius: 15px;
+	background-color: ;
+}
+#playButton{
+	height: 34px;
+	width: 70px;
+	margin-top: 30px;
+	margin-left: 2px;
+	
+	background-color: #fff;
+	color:#000;
+
+	border: 1px solid gray;
+	border-radius: 10px;
+	cursor: pointer;
+}
+#playButton:hover{
+	transition: .5s ;
+	border-radius: 15px;
+	background-color: #aaa;
+	color:#fff;
+}
+/*	main content only the game area  */
+main{
+	width: 100%;
+	height: 560px;
+	margin: 0px auto;
+
+	display: flex;
+	justify-content: center;
+}
+.side{
+	/*уменшяем от 100%ого поля поля игры и делим на два для два сайдбара*/
+	width: calc((100% - 660px) / 2);
+	height: 100%;
+	
+	text-align: center;
+
+	background-color: aqua;
+}
+#gameValues{
+	margin-top: 10px;
+	margin-left: 10px;
+	
+	font-weight: bold;
+	font-size: 18px;
+	
+	color:black;
+
+}
+#gameValues span {
+	font-weight: normal;
+}
+#playArea{
+	width: 660px;
+	height: 100%;
+	background-color: black;
+}
