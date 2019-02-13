@@ -7,9 +7,9 @@ function startGame(playerName){
 	
 	//сам рисунак танка и размеры танка для игрока так же константы 
 	const myTank = document.getElementById("myTank");
-	const tankWidth = 30;
-	const tankHeight = 35;
-	
+	const tankWidth = 25;
+	const tankHeight = 25;
+		
 	//обект для хранения информации об играке имя баллы и положения его танка 
 	var playerInfo = {
 		name: playerName ,
@@ -24,7 +24,7 @@ function startGame(playerName){
 		isLeft : false,
 		isRight: false
 	};
-	console.log(width + " : "+ height+"playex POsition: " + playerInfo.playerXPosition);
+
 	//нарисовка первого положения танка
 	c.drawImage(myTank, playerInfo.playerXPosition, playerInfo.playerYPosition, tankWidth, tankHeight) ;
 	
@@ -36,45 +36,78 @@ function startGame(playerName){
 		const down = 83;
 		const left = 65; 
 		const right = 68;
-		console.log(e.keyCode);
 		
 		//далее проверка на какую кнопку юзер кликнулл
 		/*	* зарание придуприждаю то что формулы используемые далее с матиматичасками расчетами так что их не тогать  *	*/
 		//идет в верх
 		if (e.keyCode == up && playerInfo.playerYPosition > 0) {
+			//проверяет положения танка на вверх если нет то меняет на вверх
+			if (!playerInfo.isUp)changeDiretion(0);
 			// передвижения в верх по Y
 			playerInfo.playerYPosition--;
 			
 			//первый метод очишяет canvas а второй ресует с новыми кардинатами
 			c.clearRect(0, 0, width, height);
 			c.drawImage(myTank, playerInfo.playerXPosition, playerInfo.playerYPosition, tankWidth, tankHeight) ;
-		}//идет в вниз
+		}
+		//идет в вниз
 		else if (e.keyCode == down && (playerInfo.playerYPosition - tankHeight -5) < (height/2) ) {
+			//провераяет данное положения танка и если оно на вниз не указан то меняет его положения на низ
+			if (!playerInfo.isDown)changeDiretion(180);
+			
 			// передвижения в вниз по Y 
 			playerInfo.playerYPosition++;
 			
 			//первый метод очишяет canvas а второй ресует с новыми кардинатами
 			c.clearRect(0, 0, width, height);
 			c.drawImage(myTank, playerInfo.playerXPosition, playerInfo.playerYPosition, tankWidth, tankHeight) ;
-		
-		}//идет на лево
+		}
+		//идет на лево
 		else if (e.keyCode == left && (playerInfo.playerXPosition + 7) > 0) {
+			// проверяет положения танка на лево если нет то разварачивает на лево 
+			if (!playerInfo.isLeft)changeDiretion(270);
+			
+			//передвижения на лево по Х
 			playerInfo.playerXPosition--;
+
 			//первый метод очишяет canvas а второй ресует с новыми кардинатами
 			c.clearRect(0, 0, width, height);
 			c.drawImage(myTank, playerInfo.playerXPosition, playerInfo.playerYPosition, tankWidth, tankHeight) ;
-		}//идет на право 
+		}
+		//идет на право 
 		else if (e.keyCode == right && (playerInfo.playerXPosition - tankWidth) < (width-55) ) {
+			//проверяет положения танка на право если нет то разварачивает на право
+			if (!playerInfo.isRight)changeDiretion(90);
+			//передвижения на право по Х
 			playerInfo.playerXPosition++;
-			console.log("playerX position: "+ playerInfo.playerXPosition);
+			
 			//первый метод очишяет canvas а второй ресует с новыми кардинатами
 			c.clearRect(0, 0, width, height);
 			c.drawImage(myTank, playerInfo.playerXPosition, playerInfo.playerYPosition, tankWidth, tankHeight) ;
 		}
 
 		//метод вызывается для разварота танка при повороте 
-		function changeDiretion(changeDiretionFrom, changeDiretionTo){
-			c.save();
+		function changeDiretion(changeDiretionTo){
+			const toRedian = Math.PI/180 ;
+			var myDirection;
+			var looper;
+			var myNewDirection = changeDiretionTo;
+			if (playerInfo.isUp) {
+				myDirection = 0;
+			}else if (playerInfo.isDown) {
+				myDirection  = 180;
+			}else if (playerInfo.isRight) {
+				myDirection = 90;
+			}else if (playerInfo.isLeft) {
+				myDirection = 270;
+			}
+			rotateMyTank(myDirection, myNewDirection);
+		}
+		function rotateMyTank(myDirection, myNewDirection){
+			console.log("old possition = "+ myDirection + "my new posiotion = "+ myNewDirection);	
+			/*
+				here should be the rotate method to rotate the tank,
+			*/
 
 		}
 	}
