@@ -28,7 +28,8 @@ document.getElementById("playButton").onclick = function(){
 	
 	if(playerName == "" || playerName == null || gameRunning){
 		$("#playerName").css('border', '2px solid red');
-		console.log("mabe the input is empty or the game is all ready running");
+		console.log("the game should start ater filling a name ");
+		startGame(playerName);
 	}else{
 		$("#playerName").css('border', '1px solid gray');
 		document.getElementById("playerName").value = "";

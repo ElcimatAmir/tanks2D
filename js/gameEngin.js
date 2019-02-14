@@ -94,20 +94,51 @@ function startGame(playerName){
 			var myNewDirection = changeDiretionTo;
 			if (playerInfo.isUp) {
 				myDirection = 0;
+				playerInfo.isUp 	= true ;
+				playerInfo.isDown 	= false;
+				playerInfo.isLeft 	= false;
+				playerInfo.isRight 	= false;
 			}else if (playerInfo.isDown) {
 				myDirection  = 180;
+				playerInfo.isUp 	= false;
+				playerInfo.isDown 	= true ;
+				playerInfo.isLeft 	= false;
+				playerInfo.isRight 	= false;
 			}else if (playerInfo.isRight) {
 				myDirection = 90;
+				playerInfo.isUp		= false;
+				playerInfo.isDown 	= false;
+				playerInfo.isLeft 	= false;
+				playerInfo.isRight 	= true ;
 			}else if (playerInfo.isLeft) {
 				myDirection = 270;
+				playerInfo.isUp 	= false;
+				playerInfo.isDown 	= false;
+				playerInfo.isLeft 	= true ;
+				playerInfo.isRight 	= false;
 			}
 			rotateMyTank(myDirection, myNewDirection);
 		}
 		function rotateMyTank(myDirection, myNewDirection){
-			console.log("old possition = "+ myDirection + "my new posiotion = "+ myNewDirection);	
+			//проверят на сколько градусов надо свернуть танк чтобы попал на правельное направления 
+			if (myDirection == 0){
+				var rotateTo = myNewDirection;
+			}else{
+				var rotateTo = -(myNewDirection - myDirection);
+			}
+
+			console.log("old possition = "+ myDirection + "my new posiotion = "+ myNewDirection+"rotate to : "+ rotateTo);	
+			
+			//c.translate(playerInfo.playerXPosition, playerInfo.playerYPosition);
+			c.clearRect(0, 0, width, height);
+			c.rotate((Math.PI/180) * rotateTo);
+			c.drawImage(myTank, playerInfo.playerXPosition, playerInfo.playerYPosition, tankWidth, tankHeight)
+			
 			/*
 				here should be the rotate method to rotate the tank,
 			*/
+
+
 
 		}
 	}
@@ -117,6 +148,8 @@ function startGame(playerName){
 	// save the player data to the local storage
 	savePlayer(playerInfo);
 }
+
+
 
 function savePlayer(playerInfo){
 	const memory = window.localStorage ;
