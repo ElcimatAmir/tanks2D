@@ -128,12 +128,12 @@ function startGame(playerName){
 			}
 
 			console.log("old possition = "+ myDirection + "my new posiotion = "+ myNewDirection+"rotate to : "+ rotateTo);	
-			
-			//c.translate(playerInfo.playerXPosition, playerInfo.playerYPosition);
+			c.save();
+			c.translate(playerInfo.playerXPosition + (tankWidth/2), playerInfo.playerYPosition + (tankHeight/2));
 			c.clearRect(0, 0, width, height);
 			c.rotate((Math.PI/180) * rotateTo);
 			c.drawImage(myTank, playerInfo.playerXPosition, playerInfo.playerYPosition, tankWidth, tankHeight)
-			
+			c.reload();
 			/*
 				here should be the rotate method to rotate the tank,
 			*/
